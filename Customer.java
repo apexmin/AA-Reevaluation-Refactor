@@ -27,6 +27,18 @@ public class Customer {
 		this.rentals = rentals;
 	}
 
+	public void clearRentals() {
+			System.out.println("Name: " + getName() +
+					"\tRentals: " + getRentals().size()) ;
+			for ( Rental rental: getRentals() ) {
+				System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ") ;
+				System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
+			}
+
+			List<Rental> rentals = new ArrayList<Rental>() ;
+			setRentals(rentals);
+	}
+
 	public void addRental(Rental rental) {
 		rentals.add(rental);
 
