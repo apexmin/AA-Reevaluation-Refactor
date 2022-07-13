@@ -20,8 +20,8 @@ public class VRUI {
 				case 0: quit = true ; break ;
 				case 1: ui.listCustomers() ; break ;
 				case 2: ui.listVideos() ; break ;
-				case 3: ui.register("customer") ; break ;
-				case 4: ui.register("video") ; break ;
+				case 3: ui.registerCustomer(); ; break ;
+				case 4: ui.registerVideo() ; break ;
 				case 5: ui.rentVideo() ; break ;
 				case 6: ui.returnVideo() ; break ;
 				case 7: ui.getCustomerReport() ; break;
@@ -151,15 +151,6 @@ public class VRUI {
 		List<Rental> customerRentals = foundCustomer.getRentals() ;
 		customerRentals.add(rental);
 		foundCustomer.setRentals(customerRentals);
-	}
-
-	public void register(String object) {
-		if ( object.equals("customer") ) {
-			registerCustomer();
-		}
-		else {
-			registerVideo();
-		}
 	}
 
 	private void registerVideo() {
