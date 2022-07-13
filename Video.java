@@ -57,5 +57,7 @@ abstract public class Video {
 		this.registeredDate = registeredDate;
 	}
 
-
+	public void printVideo(){
+		System.out.println("Price code: " + getPriceCode() +"\tTitle: " + getTitle()) ;
+	}
 }

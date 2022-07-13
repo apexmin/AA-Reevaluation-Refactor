@@ -110,4 +110,9 @@ public class Rental {
 			return eachPoint;
 		}
 	}
+
+	public void printRental(){
+		System.out.print("\tTitle: " + getVideo().getTitle() + " ") ;
+		System.out.print("\tPrice Code: " + getVideo().getPriceCode()) ;
+	}
 }

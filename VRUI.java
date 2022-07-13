@@ -92,7 +92,7 @@ public class VRUI {
 		System.out.println("List of videos");
 
 		for ( Video video: videos ) {
-			System.out.println("Price code: " + video.getPriceCode() +"\tTitle: " + video.getTitle()) ;
+			video.printVideo();
 		}
 		System.out.println("End of list");
 	}
@@ -100,11 +100,9 @@ public class VRUI {
 	public void listCustomers() {
 		System.out.println("List of customers");
 		for ( Customer customer: customers ) {
-			System.out.println("Name: " + customer.getName() +
-					"\tRentals: " + customer.getRentals().size()) ;
+			customer.printCustomer();
 			for ( Rental rental: customer.getRentals() ) {
-				System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ") ;
-				System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
+				rental.printRental();
 			}
 		}
 		System.out.println("End of list");
