@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.List;
 
 public class Rental {
 	private Video video ;
@@ -61,4 +62,56 @@ public class Rental {
 		limit = video.getLimit();
 		return limit ;
 	}
+
+
+	public int getDayRented(){
+		if (getStatus() == 1) { // returned Video
+			long diff = getReturnDate().getTime() - getRentDate().getTime();
+			return (int) (diff / (1000 * 60 * 60 * 24)) + 1;
+		} else { // not yet returned
+			long diff = new Date().getTime() - getRentDate().getTime();
+			return (int) (diff / (1000 * 60 * 60 * 24)) + 1;
+		}
+
+	}
+	public double  getCharge(){
+
+		double eachCharge = 0;
+		int daysRented = getDayRented();
+
+		switch (getVideo().getPriceCode()) {
+			case Video.REGULAR:
+				eachCharge += 2;
+				if (daysRented > 2)
+					eachCharge += (daysRented - 2) * 1.5;
+				break;
+			case Video.NEW_RELEASE:
+				eachCharge = daysRented * 3;
+				break;
+		}
+
+
+		return eachCharge;
+	}
+
+
+	public int getPoint(){
+		{
+			int eachPoint = 0 ;
+			int daysRented = getDayRented();
+
+
+			eachPoint++;
+
+			if ((getVideo().getPriceCode() == Video.NEW_RELEASE) )
+				eachPoint++;
+
+			if ( daysRented > getDaysRentedLimit() )
+				eachPoint -= Math.min(eachPoint, getVideo().getLateReturnPointPenalty()) ;
+
+		return eachPoint;
+		}
+	}
+
+
 }
