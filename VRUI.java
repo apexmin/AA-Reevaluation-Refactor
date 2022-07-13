@@ -155,38 +155,46 @@ public class VRUI {
 
 	public void register(String object) {
 		if ( object.equals("customer") ) {
-			System.out.println("Enter customer name: ") ;
-			String name = scanner.next();
-			Customer customer = new Customer(name) ;
-			customers.add(customer) ;
+			registerCustomer();
 		}
 		else {
-			System.out.println("Enter video title to register: ") ;
-			String title = scanner.next() ;
-
-			System.out.println("Enter video type( 1 for VHD, 2 for CD, 3 for DVD ):") ;
-			int videoType = scanner.nextInt();
-
-			System.out.println("Enter price code( 1 for Regular, 2 for New Release ):") ;
-			int priceCode = scanner.nextInt();
-
-			Date registeredDate = new Date();
-			Video video = null;
-			switch (videoType){
-				case 1:
-					video= new VHS(title, priceCode, registeredDate) ;
-				break;
-
-				case 2:
-					video= new CD(title, priceCode, registeredDate) ;
-					break;
-				case 3 :
-					video= new DVD(title, priceCode, registeredDate) ;
-					break;
-			}
-			if(video!=null)
-				videos.add(video) ;
+			registerVideo();
 		}
+	}
+
+	private void registerVideo() {
+		System.out.println("Enter video title to register: ") ;
+		String title = scanner.next() ;
+
+		System.out.println("Enter video type( 1 for VHD, 2 for CD, 3 for DVD ):") ;
+		int videoType = scanner.nextInt();
+
+		System.out.println("Enter price code( 1 for Regular, 2 for New Release ):") ;
+		int priceCode = scanner.nextInt();
+
+		Date registeredDate = new Date();
+		Video video = null;
+		switch (videoType){
+			case 1:
+				video= new VHS(title, priceCode, registeredDate) ;
+			break;
+
+			case 2:
+				video= new CD(title, priceCode, registeredDate) ;
+				break;
+			case 3 :
+				video= new DVD(title, priceCode, registeredDate) ;
+				break;
+		}
+		if(video!=null)
+			videos.add(video) ;
+	}
+
+	private void registerCustomer() {
+		System.out.println("Enter customer name: ") ;
+		String name = scanner.next();
+		Customer customer = new Customer(name) ;
+		customers.add(customer) ;
 	}
 
 	public int showCommand() {
