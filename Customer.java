@@ -39,6 +39,17 @@ public class Customer {
 			setRentals(rentals);
 	}
 
+	public void returnVideo(String videoTitle) {
+		List<Rental> customerRentals = getRentals() ;
+		for ( Rental rental: customerRentals ) {
+			if ( rental.isVideoTheRented(videoTitle) ) {
+				rental.returnVideo();
+				rental.getVideo().setRented(false);
+				break ;
+			}
+		}
+	}
+
 	public void addRental(Rental rental) {
 		rentals.add(rental);
 
