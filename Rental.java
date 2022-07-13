@@ -65,4 +65,7 @@ public class Rental {
 		}
 		return limit ;
 	}
+	public boolean isVideoTheRented(String videoTitle){
+		return video.getTitle().equals(videoTitle) && video.isRented();
+	}
 }
